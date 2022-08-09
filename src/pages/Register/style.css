@@ -5,7 +5,7 @@
     align-items: center;
     width: 370px;
     height: auto;
-    background-color: #000000;
+    background-color: #121214;
     margin-top: 20%;
 }
 .divHeader{
@@ -26,6 +26,7 @@
     width: 67px;
     height: 40px;
     cursor: pointer;
+    border: none;
 
 }
 .btnVoltar:hover{

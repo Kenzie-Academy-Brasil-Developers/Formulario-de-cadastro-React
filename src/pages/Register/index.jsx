@@ -32,7 +32,11 @@ export default function Register() {
         /^([A-Za-z]\s?){3,100}$/g,
         "Ultrapassou a quantidade de caracteres"
       ),
-    contact: yup.string().required("Nome obrigatório").matches(),
+    contact: yup
+    .string()
+    .required("Campo obrigatório")
+    .matches("linkedin/in/nome" ,"Usar perfil linkedin=> linkedin/in/nome"
+    ),
     course_module: yup.string().required("Campo obrigatório"),
   });
 
@@ -119,6 +123,7 @@ export default function Register() {
           placeholder="Opção de contato"
           {...register("contact")}
         />
+        {errors.contact?.message}
         <label>Selecionar Módulo</label>
         <select 
         className="inputRegister"
