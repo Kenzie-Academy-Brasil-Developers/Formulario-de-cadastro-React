@@ -1,6 +1,14 @@
-.main{
+import styled from "styled-components";
+
+
+export const ContainerDashboard = styled.div`
+  background-color: #000000;
+  color: #F8F9FA;
+  width: 100%;
+
+.dashMain{
     width: 100%;
-    height: 1000px;
+    height: auto;
     flex-wrap: wrap;
 }
 
@@ -53,7 +61,7 @@
     height: 100px;
     background-color: #121214;
     /* margin-top: 10%; */
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
 }
 .h4body{
@@ -64,7 +72,9 @@
 }
 .spanBody{
     font-size: 1.3rem;
-    color: white
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 .spanBody1{
     font-size: 0.7rem;
@@ -85,6 +95,7 @@
 .pFooter{
     color: white;
     margin-bottom: 55%;
+    margin-top: 50px;
 }
 
 @media (min-width: 375px) {
@@ -118,3 +129,4 @@
       flex-wrap: wrap;
         }
   }
+`

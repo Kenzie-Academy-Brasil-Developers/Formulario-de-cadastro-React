@@ -1,3 +1,10 @@
+import styled from "styled-components";
+
+
+export const ContainerRegister = styled.div`
+ background-color: #000000;
+color: #F8F9FA;
+
 .kenzie{
     display: flex;
     justify-content: center;
@@ -5,7 +12,7 @@
     align-items: center;
     width: 370px;
     height: auto;
-    background-color: #121214;
+    background-color: #000000;
     margin-top: 20%;
 }
 .divHeader{
@@ -16,6 +23,7 @@
 
 }
 .spanKenzie{
+    
     color: #FF577F;
     font-size: 1.7rem;
     font-weight: bold;
@@ -104,7 +112,7 @@ h3{
   label{
     display: flex;
     align-items: center;
-    width: 95%px;
+    width: 95%;
     font-size: 0.8rem;
   }
 
@@ -139,3 +147,4 @@ h3{
       flex-wrap: wrap;
         }
   }
+`

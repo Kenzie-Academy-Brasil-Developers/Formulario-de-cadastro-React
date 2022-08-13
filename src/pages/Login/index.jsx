@@ -1,14 +1,14 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom"
 import { yupResolver } from "@hookform/resolvers/yup";
-import api from "../../services/api";
-import { toast} from "react-toastify";
+import { useContext } from "react";
+import { allContext } from "../../context/AllContext";
+import { ContainerLogin } from "./style";
+import {FaRegEyeSlash} from "react-icons/fa"
 
-
-export default function Login({setUsers}) {
+export default function Login() {
+  const {onSubmitLogin, navigate} = useContext(allContext) 
   
-  const navigate = useNavigate()
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório").email("Email inválido"),
@@ -25,52 +25,46 @@ export default function Login({setUsers}) {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitFunction = (data) => {
-    api.post("/sessions", data)
-    .then((response)=>{
-      const {user, token} = response.data
-      setUsers(user) 
-      console.log(response)
-      localStorage.setItem("@TOKEN", token);
-      localStorage.setItem("@USERID", JSON.stringify(user.id));
-      toast.success("login efetuado com sucesso")
-      navigate("/dashboard")
-    })
-    .catch((_)=>(toast.error("Ops, Algo deu errado")))
-    
-  }
+  
   
  
  
   return (
+    <ContainerLogin>
+   
     <div className="kenzie">
         <span>Kenzie Hub</span>
       <div className="container">
         <h3>Login</h3>
-        <form className="form" onSubmit={handleSubmit(onSubmitFunction)}>
+        <form className="loginForm" onSubmit={handleSubmit(onSubmitLogin)}>
           <label htmlFor="email">Email</label>
           <input
           type="text"
           id="email" 
-          className="input"
+          className="loginInput"
           placeholder="Endereço de Email" {...register("email")} />
           {errors.email?.message}
           <label htmlFor="password">Senha</label>
+          <div className="loginPassword">
+          <div className="inputPassword">
           <input
           type="password"
           id="password"
-            className="input"
+            className="InputSenha"
             placeholder="Senha"
             {...register("password")}
           />
           {errors.password?.message}
-          
+          </div>
+          <button className="abrirSenha"><FaRegEyeSlash /></button>
+          </div>
           <button 
           className="btnEntrar" type="submit">
             Entrar
           </button>
-                   
-          <h4>Já possui uma conta?</h4>
+          <div className="observ">         
+          <h4>Ainda não possui uma conta?</h4>
+          </div>
           <button 
             onClick={()=> navigate("/register")}
           
@@ -80,5 +74,6 @@ export default function Login({setUsers}) {
         </form>
       </div>
     </div>
+    </ContainerLogin>
   );
 }

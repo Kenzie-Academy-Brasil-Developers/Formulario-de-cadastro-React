@@ -1,4 +1,9 @@
+import styled from "styled-components";
 
+
+export const ContainerLogin = styled.div`
+ background-color: #000000;
+color: #F8F9FA;
 
 .kenzie{
     display: flex;
@@ -12,7 +17,8 @@
 }
 span{
     color: #FF577F;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
+    font-weight:bold ;
 }
 .container{
 
@@ -29,7 +35,7 @@ h3{
     font-size: 1rem;
     color: #F8F9FA;
 }
-  .form{
+  .loginForm{
   
     display: flex;
     flex-direction: column;
@@ -41,13 +47,18 @@ h3{
     
   
   }
-  
+  label{
+    width: 90%;
+    text-align: left;
+}
+  }
+ 
 .dsc{
     display: flex;
     text-align: left;
     align-items: flex-start;
 }
-  .input{
+  .loginInput{
   
     height: 38.5px;
     width: 90%;
@@ -59,16 +70,68 @@ h3{
     border-radius: 5px;
   
   }
-  .senha{
+  .loginPassword{
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
-    justify-content: space-between ;
-    width: 90%;
     height: 38.5px;
+    width: 90%;
+    margin-bottom: 20px;
+    background-color: #343B41;
+    color: aliceblue;
+    font-size: 0.8rem;
+    border-color: #F8F9FA;
+    border-radius: 5px;
+    border-style: inset;
+    
+  
   }
-  .inputSenha{
-  width: 90%;
-  height: 38.5px;  
+  .loginPassword:focus-within {
+    /* font-weight: bold;
+    border-color: #F8F9FA;
+    border-style: outset; */
+    outline: 2px solid #F8F9FA;
+    outline-offset: 2px;
+    outline-style: inset;
+    border-style: none;
+    
+  }
+  .inputPassword{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 38.5px;
+    width: 90%;
+    margin-bottom: 20px;
+    background-color: #343B41;
+    color: aliceblue;
+    font-size: 0.8rem;
+    border-color: #F8F9FA;
+    border-radius: 5px;
+  
+  }
+  .abrirSenha{
+    height: 38.5px;
+    background-color: #343B41;
+    color: #F8F9FA;
+    font-size: 0.5rem;
+    border: none;
+    border-radius: 5px;
+  }
+  .InputSenha{
+    height: 100%;
+    width: 90%;
+    margin-bottom: 20px;
+    background-color: #343B41;
+    color: aliceblue;
+    font-size: 0.8rem;
+    border-color: #F8F9FA;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+    outline: none;
+    
+    
   }
   .btnEntrar{
     background-color: #FF577F;
@@ -79,6 +142,7 @@ h3{
     color: aliceblue;
     font-size: 1rem;
     cursor: pointer;
+    margin-bottom: 15px;
   }
   .btnEntrar:hover{
     -webkit-transform: scale(1.1);
@@ -107,17 +171,19 @@ h3{
     border-radius: 5%;
   }
   h4{
-    width: 90%;
-    display: flex;
-    justify-content: right;
+    width: 100%;
     color: #868E96;
+    font-size: 0.75rem;
+    font-weight: none;
+    
+    
   }
 
   
   .label{
     display: flex;
     align-items: center;
-    width: 90%px;
+    width: 90%;
   }
 
   @media (min-width: 375px) {
@@ -150,4 +216,4 @@ h3{
       width: 1440px;
       flex-wrap: wrap;
         }
-  }
+  }`
