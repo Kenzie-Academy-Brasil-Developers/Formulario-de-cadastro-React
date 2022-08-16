@@ -38,11 +38,7 @@ export default function Register() {
     course_module: yup.string().required("Campo obrigatório"),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit, formState: { errors }, } = useForm({
     resolver: yupResolver(formSchema),
   });
 
@@ -58,7 +54,9 @@ export default function Register() {
         <div className="container">
           <h3>Crie sua conta</h3>
           <p>Rapido e grátis, vamos nessa</p>
-          <form className="form" onSubmit={handleSubmit(onSubmitRegister)}>
+          <form 
+          className="form" 
+          onSubmit={handleSubmit(onSubmitRegister)}>
             <label htmlFor="name">Nome</label>
             <input
               type="text"
