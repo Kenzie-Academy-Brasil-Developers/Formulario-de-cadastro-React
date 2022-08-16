@@ -10,6 +10,7 @@ export const ContainerDashboard = styled.div`
     width: 100%;
     height: auto;
     flex-wrap: wrap;
+    padding: 0;
 }
 
 .divHomeHeader{

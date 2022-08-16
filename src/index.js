@@ -5,19 +5,22 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import AllProvider from "./context/AllContext";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
 import Global from "./styles/global";
+import TechsProvider from "./context/TechsContext/Techs";
+import ModalModal from "./components/ModalModal";
+import Modal from "./pages/Modal";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <AllProvider>
-      <App />
-      <Global/>
-    </AllProvider>
+      <AllProvider>
+        <TechsProvider>
+          <App />
+          <Global />
+        </TechsProvider>
+      </AllProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

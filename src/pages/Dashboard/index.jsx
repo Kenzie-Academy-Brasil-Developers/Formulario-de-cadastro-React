@@ -1,14 +1,18 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { allContext } from "../../context/AllContext";
 import { useContext } from "react";
 import { ContainerDashboard } from "./style";
+import Tecnologias from "../../components/Tecnologias";
+import { techsContext } from "../../context/TechsContext/Techs";
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const { users } = useContext(allContext);
+  const {isTechs} = useContext(techsContext);
 
-  console.log(users);
-  return (
+  // console.log(`Dashboard`, users);
+  return users? (
     <ContainerDashboard>
       <div className="dashMain">
         <div className="divHomeHeader">
@@ -25,14 +29,11 @@ export default function Dashboard() {
           <span className="spanBody1">{users?.course_module}</span>
         </div>
         <div className="dashFooter">
-          <span className="spanBody">
-            Que pena! Estamos em desenvolvimento :(
-          </span>
-          <p className="pFooter">
-            Nossa aplicação está em desenvolvimento, em breve teremos novidades
-          </p>
+          <Tecnologias isTechs={isTechs}/>
         </div>
       </div>
     </ContainerDashboard>
-  );
+  )
+  : <Navigate to="/login" replace />
+  ;
 }
