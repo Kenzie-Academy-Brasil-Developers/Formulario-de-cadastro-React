@@ -3,8 +3,7 @@ import {Routes, Route, Navigate} from "react-router-dom"
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import { allContext } from "../context/AllContext";
-import {useContext} from "react"
+import { AllContext } from "../context/AllContext";
 import Modal from "../pages/Modal";
 
 

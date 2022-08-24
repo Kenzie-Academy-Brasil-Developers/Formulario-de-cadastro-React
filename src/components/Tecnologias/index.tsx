@@ -1,13 +1,13 @@
 import { useContext } from "react"
 import { ContainerTecnologias } from "./style";
 import {FaRegTrashAlt} from "react-icons/fa"
-import { techsContext } from "../../context/TechsContext/Techs";
+import { TechsContext } from "../../context/TechsContext/Techs";
 
 
 export default function Tecnologias() {
   
-  const {navigate, isTechs, removeTech} = useContext(techsContext)
-  const {isOpenModal, setIsOpenModal} = useContext(techsContext);
+  const {isTechs, removeTech} = useContext(TechsContext)
+  const {isOpenModal, setIsOpenModal} = useContext(TechsContext);
  
   
   

@@ -1,18 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import "./pages/Login/style.js";
-import "./pages/Register/style.js";
-import "./pages/Dashboard/style.js";
+import "./pages/Login/style.ts";
+import "./pages/Register/style.ts";
+import "./pages/Dashboard/style.ts";
 import RoutesMain from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ModalModal from "./components/ModalModal";
 import Modal from "./pages/Modal";
 import { useContext } from "react";
-import { techsContext } from "./context/TechsContext/Techs";
+import { TechsContext } from "./context/TechsContext/Techs";
+
 
 function App() {
-  const {isOpenModal, setIsOpenModal} = useContext(techsContext);
+  const {isOpenModal} = useContext(TechsContext);
 
 
   return (

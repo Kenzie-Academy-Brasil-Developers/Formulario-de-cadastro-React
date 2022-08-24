@@ -3,14 +3,13 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { allContext } from "../../context/AllContext";
 import { ContainerModal } from "./style";
-import { techsContext } from "../../context/TechsContext/Techs";
-
+import { ITechPreview, TechsContext } from "../../context/TechsContext/Techs";
+import { IUser } from "../../context/AllContext";
 
 export default function Modal(){
 
-  const {onSubmitTech, navigate, isOpenModal, setIsOpenModal } = useContext(techsContext)
+  const {onSubmitTech, setIsOpenModal } = useContext(TechsContext)
   
 
   const formSchema = yup.object().shape({
@@ -21,11 +20,11 @@ export default function Modal(){
     
   });
 
-  const { register, handleSubmit, formState: { errors }, } = useForm({
+  const { register, handleSubmit, formState: { errors }, } = useForm<ITechPreview>({
     resolver: yupResolver(formSchema),
   });
 
-  const addTechSubmitForm = (data)=>{
+  const addTechSubmitForm = (data:ITechPreview)=>{
     
     onSubmitTech(data)
     

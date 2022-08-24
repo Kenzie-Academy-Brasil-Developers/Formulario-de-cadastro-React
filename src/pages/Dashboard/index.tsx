@@ -1,15 +1,15 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import { allContext } from "../../context/AllContext";
+import { AllContext } from "../../context/AllContext";
 import { useContext } from "react";
 import { ContainerDashboard } from "./style";
 import Tecnologias from "../../components/Tecnologias";
-import { techsContext } from "../../context/TechsContext/Techs";
+import { TechsContext } from "../../context/TechsContext/Techs";
 
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { users } = useContext(allContext);
-  const {isTechs} = useContext(techsContext);
+  const { users } = useContext(AllContext);
+  const {isTechs} = useContext(TechsContext);
 
   // console.log(`Dashboard`, users);
   return users? (
@@ -29,7 +29,7 @@ export default function Dashboard() {
           <span className="spanBody1">{users?.course_module}</span>
         </div>
         <div className="dashFooter">
-          <Tecnologias isTechs={isTechs}/>
+          <Tecnologias/>
         </div>
       </div>
     </ContainerDashboard>

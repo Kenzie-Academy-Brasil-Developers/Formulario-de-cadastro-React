@@ -2,12 +2,14 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { allContext } from "../../context/AllContext";
+import { AllContext, IUserLogin } from "../../context/AllContext";
 import { ContainerLogin } from "./style";
 import {FaRegEyeSlash} from "react-icons/fa"
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const {onSubmitLogin, navigate} = useContext(allContext) 
+  const navigate = useNavigate();
+  const {onSubmitLogin} = useContext(AllContext) 
   
 
   const formSchema = yup.object().shape({
@@ -21,7 +23,7 @@ export default function Login() {
       ),
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm<IUserLogin>({
     resolver: yupResolver(formSchema),
   });
 
@@ -30,7 +32,7 @@ export default function Login() {
  
  
   return (
-    <ContainerLogin>
+    <ContainerLogin width={370}>
    
     <div className="kenzie">
         <span>Kenzie Hub</span>

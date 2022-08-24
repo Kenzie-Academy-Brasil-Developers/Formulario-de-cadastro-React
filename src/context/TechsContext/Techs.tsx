@@ -1,18 +1,43 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../services/api";
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { useAuth } from "../AllContext";
 
-export const techsContext = createContext([]);
+// ITech = representa retornp de tech (title, status, id)
 
-function TechsProvider({ children }) {
+interface ITechsProviderProps{
+  children: ReactNode;
+}
+
+interface ITech {
+  title: string;
+  status: string;
+  id: string;
+}
+export type ITechPreview = Omit<ITech, "id">;
+
+
+interface ITechsContext {
+  
+  onSubmitTech: (data: ITechPreview)=> void;
+  isTechs: ITech[];
+  setIsTechs: (value:ITech[])=>void;
+  isOpenModal: boolean;
+  setIsOpenModal: (value:boolean)=>void;
+  removeTech: (value:string)=>void;
+}
+
+
+export const TechsContext = createContext<ITechsContext>({} as ITechsContext);
+
+function TechsProvider({ children }: ITechsProviderProps) {
   const { users } = useAuth();
   const navigate = useNavigate();
-  const [isTechs, setIsTechs] = useState([]);
+  const [isTechs, setIsTechs] = useState<ITech[]>([] as ITech[]);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const onSubmitTech = (data) => {
+  const onSubmitTech = (data:ITechPreview) => {
     api
       .post("/users/techs", data)
       .then((response) => {
@@ -31,7 +56,7 @@ function TechsProvider({ children }) {
     }
   }, [users.techs]);
 
-  async function removeTech(tech_id) {
+  async function removeTech(tech_id:string) {
     try {
       await api.delete(`/users/techs/${tech_id}`);
        
@@ -45,10 +70,8 @@ function TechsProvider({ children }) {
   }
 
   return (
-    <techsContext.Provider
+    <TechsContext.Provider
       value={{
-        users,
-        navigate,
         onSubmitTech,
         isTechs,
         setIsTechs,
@@ -58,7 +81,7 @@ function TechsProvider({ children }) {
       }}
     >
       {children}
-    </techsContext.Provider>
+    </TechsContext.Provider>
   );
 }
 export default TechsProvider;

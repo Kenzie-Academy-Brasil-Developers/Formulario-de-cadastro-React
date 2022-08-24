@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
+interface IContainerProps{
+  width: number;
+}
 
-export const ContainerLogin = styled.div`
- background-color: #000000;
+export const ContainerLogin = styled.div<IContainerProps>`
+background-color: #000000;
 color: #F8F9FA;
+width: ${({width})=>width}px;
 
 .kenzie{
     display: flex;

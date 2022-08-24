@@ -2,11 +2,13 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { allContext } from "../../context/AllContext";
+import { AllContext, IUser } from "../../context/AllContext";
 import { ContainerRegister } from "./style";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
-  const { onSubmitRegister, navigate } = useContext(allContext);
+  const navigate = useNavigate();
+  const { onSubmitRegister } = useContext(AllContext);
 
   const formSchema = yup.object().shape({
     name: yup
@@ -33,12 +35,11 @@ export default function Register() {
       ),
     contact: yup
       .string()
-      .required("Campo obrigatório")
-      .matches("", "Usar perfil linkedin=> linkedin/in/nome"),
+      .required("Campo obrigatório"),
     course_module: yup.string().required("Campo obrigatório"),
   });
 
-  const { register, handleSubmit, formState: { errors }, } = useForm({
+  const { register, handleSubmit, formState: { errors }, } = useForm<IUser>({
     resolver: yupResolver(formSchema),
   });
 

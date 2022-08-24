@@ -7,18 +7,18 @@ import { BrowserRouter } from "react-router-dom";
 import AllProvider from "./context/AllContext";
 import Global from "./styles/global";
 import TechsProvider from "./context/TechsContext/Techs";
-import ModalModal from "./components/ModalModal";
-import Modal from "./pages/Modal";
 
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AllProvider>
         <TechsProvider>
-          <App />
-          <Global />
+          <App/>
+          <Global/>
         </TechsProvider>
       </AllProvider>
     </BrowserRouter>
