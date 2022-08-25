@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavigateProps, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../services/api";
 import { createContext, ReactNode, useEffect, useState } from "react";
@@ -44,7 +44,7 @@ interface IAllContext {
   setUsers: (value:IUser)=>void;
   onSubmitLogin: (data: IUserLogin)=>void;
   onSubmitRegister: (data:IUser)=>void;
-  // navigate: (value:)=>void
+  // navigate: (value: NavigateProps)=>void
 }
 
 export const AllContext = createContext<IAllContext>({} as IAllContext);
